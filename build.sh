@@ -36,6 +36,7 @@ fi
 wget --timeout=30 --waitretry=2 --tries=3 -q $HOSTS -O ./rule/$TMP_HOSTS
 if [ $? -eq 0 ];then
     echo "[NOTICE] get hosts.txt successfully!"
+    bash ./swap_hosts.sh ./rule/$TMP_GEOSITE
 else
     echo "get hosts.txt failed! please check your network!"
     exit 1
