@@ -23,6 +23,7 @@ if [ $? -eq 0 ];then
     ./v2dat unpack geosite -o ./rule -f cn ./rule/$TMP_GEOSITE
     ./v2dat unpack geosite -o ./rule -f category-ads-all ./rule/$TMP_GEOSITE
     ./v2dat unpack geosite -o ./rule -f geolocation-\!cn ./rule/$TMP_GEOSITE
+    ./v2dat unpack geosite -o ./rule -f category-games@cn ./rule/$TMP_GEOSITE
     mv ./rule/geosite_geolocation-\!cn.txt ./rule/geolocation-no-cn.txt
 else
     echo "get geosite.dat failed! please check your network!"
