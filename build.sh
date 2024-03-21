@@ -8,6 +8,7 @@ GEOSITE=https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download
 HOSTS=https://raw.githubusercontent.com/googlehosts/hosts/master/hosts-files/hosts
 
 mkdir rule
+mkdir tmp
 
 wget --timeout=30 --waitretry=2 --tries=3 -q $GEOIP -O ./rule/$TMP_GEOIP
 
@@ -33,10 +34,11 @@ else
     exit 1
 fi
 
-wget --timeout=30 --waitretry=2 --tries=3 -q $HOSTS -O ./rule/$TMP_HOSTS
+wget --timeout=30 --waitretry=2 --tries=3 -q $HOSTS -O ./tmp/$TMP_HOSTS
 if [ $? -eq 0 ];then
     echo "[NOTICE] get hosts.txt successfully!"
-    bash ./swap_hosts.sh ./rule/$TMP_GEOSITE
+    bash ./swap_hosts.sh ./tmp/$TMP_HOSTS
+    mv ./tmp/$TMP_HOSTS ./rule/$TMP_HOSTS
 else
     echo "get hosts.txt failed! please check your network!"
     exit 1
