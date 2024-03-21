@@ -11,7 +11,7 @@ input_file="$1"
 
 # 使用 awk 一次性处理整个文件
 awk '
-BEGIN { FS = " "; OFS = "\t"}
+BEGIN { FS = " "; OFS = "\t\t"}
 /^#/ { print; next }
 { print $2, $1 }' "$input_file" > "$input_file".tmp && mv "$input_file".tmp "$input_file"
 
